@@ -16,7 +16,7 @@ export class StickyJsonService {
    }
 
   getUserNotes():Observable<stickyNote[]>{
-    return this.httpClient.get<stickyNote[]>(this.backendurl);
+    return this.httpClient.get<stickyNote[]>(this.backendurl+"?_sort=id&_order=desc");
   }
 
   addUserNotes(newNote:stickyNote):Observable<any>{

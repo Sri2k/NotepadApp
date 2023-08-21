@@ -160,6 +160,10 @@ export class NotesComponent {
         
         this.userData = this.userData.filter((note) => note.id !== noteId);
         this.successMessage = 'Note deleted successfully'; // Show success message
+        this.formData.patchValue({
+          title: '',
+          content: ''
+        });
         setTimeout(() => {
           this.successMessage = '';
         }, 5000);

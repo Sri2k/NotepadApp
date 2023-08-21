@@ -3,14 +3,14 @@
     <!-- header -->
     <div class="header d-flex justify-content-end gap-2">
       <div>
-        <button type="button" class="btn btn-sm mt-1  customButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+        <button type="button" class="btn btn-sm mt-1  customButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="getUserData()"
         data-toggle="tooltip" data-placement="top" title="my notes history">
           <i class="bi bi-clock-history"></i>
         </button>
       </div>
   
       <div>
-        <button type="button" class="btn btn-sm mt-1  customButton"
+        <button type="button" class="btn btn-sm mt-1  customButton" (click)="addNewNote()"
         data-toggle="tooltip" data-placement="top" title="Add or Save the note">
           <i class="bi {{ editing ? 'bi-pencil-fill': 'bi-file-earmark-plus-fill' }}"></i>
         </button>
@@ -56,13 +56,13 @@
   
     </span>
       <span class="me-2">
-        <button type="button" class="btn btn-sm   customButton"   
+        <button type="button" class="btn btn-sm   customButton" (click)="toggleListening()" 
         data-toggle="tooltip" data-placement="bottom" title="Use mic to avoid typing">
           <i class="bi bi-mic-fill"></i>
         </button>
       </span>
       <span>
-        <button type="button" class="btn btn-sm   customButton"   
+        <button type="button" class="btn btn-sm   customButton" (click)="clearAllTranscript()"
         data-toggle="tooltip" data-placement="bottom" title="Clear the message">
           <i class="bi bi-eraser-fill"></i>
         </button>
@@ -71,4 +71,37 @@
     
   </div>
   
+  
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 whiteColor" id="staticBackdropLabel">Your Stuff</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-dialog-scrollable d-flex flex-column gap-3">
+              <div class="col band blueColor d-flex justify-content-between" data-bs-dismiss="modal" (click)="newBand()">
+                <span><p>Add new note here</p></span>&nbsp;
+                <span class="me-1"><i class="bi bi-file-earmark-plus-fill"></i></span>
+  
+              </div>
+              <div *ngFor="let note of userData; index as i" class="col band d-flex align-items-center" (click)="editBand(note)">
+                <span class="me-auto blueColor"><p>{{ note.title }}</p></span>
+                 <span class="me-1"> <i class="bi bi-x-lg" (click)="deleteBand(note.id)"></i></span>
+              </div>
+            </div>
+          </div>
+         
+          <!-- <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
   
