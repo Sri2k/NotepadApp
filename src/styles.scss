@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    font-family:'monospace' !important;
+    font-weight:bolder;
+}
+body {
+    background-color: #05386B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
