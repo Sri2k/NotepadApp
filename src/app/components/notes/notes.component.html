@@ -1,1 +1,74 @@
-<p>notes works!</p>
+
+<div class="container shadow-lg d-flex flex-column">
+    <!-- header -->
+    <div class="header d-flex justify-content-end gap-2">
+      <div>
+        <button type="button" class="btn btn-sm mt-1  customButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop" 
+        data-toggle="tooltip" data-placement="top" title="my notes history">
+          <i class="bi bi-clock-history"></i>
+        </button>
+      </div>
+  
+      <div>
+        <button type="button" class="btn btn-sm mt-1  customButton"
+        data-toggle="tooltip" data-placement="top" title="Add or Save the note">
+          <i class="bi {{ editing ? 'bi-pencil-fill': 'bi-file-earmark-plus-fill' }}"></i>
+        </button>
+      </div>
+    </div>
+  
+    <!-- content -->
+  <div class="flex-grow-1 mt-1 mb-1">
+    <form [formGroup]="formData" class="h-100">
+      <div class="form-group">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control blueColor textarea-title shadow-lg" id="floatingInput" formControlName="title">
+          <label for="floatingInput" class="customlabel blueColor">Title</label>
+        </div>
+      </div>
+  
+      <div class="formgroup h-75">
+        <div class="form-floating h-100">
+          <textarea formControlName="content" class="form-control blueColor textarea-content shadow-lg h-100"
+            id="floatingInput" [style.fontSize.px]="fontSize"></textarea>
+          <label for="floatingInput" class="customlabel blueColor">Content</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  
+  
+  <!-- footer -->
+  <div class="footer d-flex justify-content-between gap-2">
+    <div class="slider-container" data-toggle="tooltip" data-placement="bottom" title="To increase/decrease the font size">
+      <input   type="range" min="12" max="48" step="2" [(ngModel)]="fontSize">
+    </div>
+    <div class="blueColor me-2">{{successMessage}}</div>
+    
+    <div *ngIf="formData.invalid && formData.touched" class="blueColor me-2">Please fill in all the required fields</div>
+  
+    
+  
+    <div>
+      <span class="blueColor"
+    *ngIf="isProcessing">Processing...
+  
+    </span>
+      <span class="me-2">
+        <button type="button" class="btn btn-sm   customButton"   
+        data-toggle="tooltip" data-placement="bottom" title="Use mic to avoid typing">
+          <i class="bi bi-mic-fill"></i>
+        </button>
+      </span>
+      <span>
+        <button type="button" class="btn btn-sm   customButton"   
+        data-toggle="tooltip" data-placement="bottom" title="Clear the message">
+          <i class="bi bi-eraser-fill"></i>
+        </button>
+      </span>
+    </div>
+    
+  </div>
+  
+  
